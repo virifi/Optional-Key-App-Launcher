@@ -5,6 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="14" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -20,6 +21,7 @@
         <receiver android:name="OptionalKeyReceiver">
             <intent-filter>
                 <action android:name="com.android.systemui.statusbar.OPTIONAL_BUTTON_CLICKED"></action>
+                <action android:name="com.android.systemui.statusbar.OPTIONAL_BUTTON_LONG_CLICKED"></action>
             </intent-filter>
         </receiver>
     </application>

@@ -3,19 +3,30 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
+    
     <TextView
-        android:id="@+id/current_setting_text"
+        android:id="@+id/clicked_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:text="Current Setting" />
-
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:text="OPTIONAL_BUTTON_CLICKED" />
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textOn="Select"
+        android:textOff="Previous"
+        android:text="Launch mode" />
+    
     <LinearLayout
         android:id="@+id/current_app_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:visibility="gone">
 
@@ -41,27 +52,92 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/unset_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:text="Tap here to select an app" />
+
+    <TextView
+        android:id="@+id/clicked_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:text="OPTIONAL_BUTTON_LONG_CLICKED" />
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textOn="Select"
+        android:textOff="Previous"
+        android:text="Launch mode" />
+    
+    <LinearLayout
+        android:id="@+id/current_app_container2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/app_icon2"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="5dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/app_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/package_name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </LinearLayout>
-
+     <TextView
+        android:id="@+id/unset_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:text="Tap here to select an app" />
+    
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="15dp" >
 
         <Button
-            android:id="@+id/get_app_list_button"
+            android:id="@+id/normal_clicked_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select App" />
-
+            android:text="CLICKED" />
         <Button
-            android:id="@+id/test_button"
+            android:id="@+id/long_clicked_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Broadcast Test" />
+            android:layout_marginLeft="15dp"
+            android:text="LONG_CLICKED" />
 
     </LinearLayout>
 
