@@ -121,24 +121,5 @@
         android:textColor="@android:color/white"
         android:text="Tap here to select an app" />
     
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp" >
-
-        <Button
-            android:id="@+id/normal_clicked_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CLICKED" />
-        <Button
-            android:id="@+id/long_clicked_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="LONG_CLICKED" />
-
-    </LinearLayout>
 
 </LinearLayout>

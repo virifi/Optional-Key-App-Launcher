@@ -25,8 +25,6 @@ public final class R {
         public static final int linearLayout1=0x7f050001;
         public static final int linearLayout2=0x7f050007;
         public static final int linearLayout3=0x7f05000d;
-        public static final int long_clicked_button=0x7f050012;
-        public static final int normal_clicked_button=0x7f050011;
         public static final int package_name=0x7f050003;
         public static final int package_name2=0x7f05000f;
         public static final int switch1=0x7f050005;

@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -31,6 +33,8 @@ import android.widget.TextView;
 
 public class OptionalKeyAppLauncherActivity extends Activity implements
 		LoaderCallbacks<List<ResolveInfo>> {
+	private Context mContext = null;
+	
 	public static final String PREF_NAME = "OptionalKeySetting";
 	public static final String PACKAGE_NAME_KEY1 = "packageName1";
 	public static final String PACKAGE_NAME_KEY2 = "packageName2";
@@ -64,6 +68,7 @@ public class OptionalKeyAppLauncherActivity extends Activity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		mContext = getApplicationContext();
 
 		mPackageManager = getPackageManager();
 		mProgressDialog = new ProgressDialog(this);
@@ -131,24 +136,6 @@ public class OptionalKeyAppLauncherActivity extends Activity implements
 		mContainer2.setOnClickListener(appSelectListener2);
 		mUnsetTextView2.setOnClickListener(appSelectListener2);
 		
-
-		Button normalClickedButton = (Button) findViewById(R.id.normal_clicked_button);
-		normalClickedButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent("com.android.systemui.statusbar.OPTIONAL_BUTTON_CLICKED");
-				sendBroadcast(intent);
-			}
-		});
-		Button longClickedButton = (Button) findViewById(R.id.long_clicked_button);
-		longClickedButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent("com.android.systemui.statusbar.OPTIONAL_BUTTON_LONG_CLICKED");
-				sendBroadcast(intent);
-			}
-		});
-		
 	}
 
 	@Override
@@ -189,9 +176,9 @@ public class OptionalKeyAppLauncherActivity extends Activity implements
 
 	private void loadSetting() {
 		String packageName1 = mPref.getString(PACKAGE_NAME_KEY1, null);
-		String modeStr1 = mPref.getString(MODE_STR1, MODE_SELECT);
+		String modeStr1 = mPref.getString(MODE_STR1, null);
 		String packageName2 = mPref.getString(PACKAGE_NAME_KEY2, null);
-		String modeStr2 = mPref.getString(MODE_STR2, MODE_SELECT);
+		String modeStr2 = mPref.getString(MODE_STR2, null);
 		
 		
 		setSetting(NORMAL_CLICKED, packageName1, modeStr1);
@@ -199,6 +186,19 @@ public class OptionalKeyAppLauncherActivity extends Activity implements
 	}
 	
 	private void setSetting(int target, String packageName, String modeStr) {
+		if (modeStr == null) {
+			Editor editor = mPref.edit();
+			String modeStrKey;
+			if (target == NORMAL_CLICKED) {
+				modeStrKey = MODE_STR1;
+				modeStr = MODE_SELECT;
+			} else {
+				modeStrKey = MODE_STR2;
+				modeStr = MODE_PREVIOUS;
+			}
+			editor.putString(modeStrKey, modeStr);
+			editor.commit();
+		}
 		Switch modeSwitch;
 		if (target == NORMAL_CLICKED) {
 			modeSwitch = mSwitch1;
